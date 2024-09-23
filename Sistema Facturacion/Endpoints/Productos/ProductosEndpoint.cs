@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Sistema_Facturacion.data;
 using Sistema_Facturacion.models.Producto;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Sistema_Facturacion.Endpoints.Productos
 {
