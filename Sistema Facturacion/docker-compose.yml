@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  oracle:
+    image: gvenzl/oracle-xe:21-slim  # Imagen de Oracle XE
+    container_name: oracle-xe
+    ports:
+      - "1521:1521"     # Puerto para Oracle Database
+      - "8080:8080"     # Puerto para Oracle APEX o EM Express
+    environment:
+      - ORACLE_PASSWORD=root123  # Configura la contraseña para el usuario SYSTEM
+    volumes:
+      - oracle-data:/opt/oracle/oradata  # Para persistir los datos de la base de datos
+
+volumes:
+  oracle-data:
