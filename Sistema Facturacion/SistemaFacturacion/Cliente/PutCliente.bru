@@ -1,0 +1,22 @@
+meta {
+  name: PutCliente
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5150/api/clientes/afd5daa7-d4b3-4b66-84d6-613ae1ae42e0
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Erick Jose",
+    "apellido": "Reyes Pineda",
+    "correo": "erickjosepineda33@gmail.com",
+    "telefono": "88346201",
+    "direccion": "jan Pedro",
+    "activo": false
+  }
+}

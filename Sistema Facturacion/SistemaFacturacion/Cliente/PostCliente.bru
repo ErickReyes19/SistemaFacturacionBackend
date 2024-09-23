@@ -1,0 +1,21 @@
+meta {
+  name: PostCliente
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/clientes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Erick Jose",
+    "apellido": "Reyes Pineda",
+    "correo": "erickjosepineda33@gmail.com",
+    "telefono": "88346201",
+    "direccion": "Barrio la libertad"
+  }
+}
