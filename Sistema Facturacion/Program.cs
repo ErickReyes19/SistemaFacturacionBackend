@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Sistema_Facturacion.Endpoints.Productos;
 using Sistema_Facturacion.data;
 using Sistema_Facturacion.Endpoints.Clientes;
 using Sistema_Facturacion.Endpoints;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,11 @@ Console.WriteLine($"Cadena de conexión: {connectionString}");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseOracle(connectionString));
 
+// Configurar la autenticación JWT
+var jwtKey = builder.Configuration["Jwt:Key"];
+builder.Services.AddSingleton(new AuthService(jwtKey));
+
+
 var app = builder.Build();
 
 // Configurar la tubería HTTP
@@ -30,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
+app.UseAuthentication(); // Agregar esto antes de UseAuthorization
 app.UseAuthorization();
 
 // Mapea el endpoint de la fecha y hora actual

@@ -81,7 +81,7 @@ namespace Sistema_Facturacion.Endpoints.Clientes
 
             await context.SaveChangesAsync();
 
-            return Results.Ok("Usuario actualizado"); 
+            return Results.Ok("Cliente actualizado"); 
         }
     }
 }
