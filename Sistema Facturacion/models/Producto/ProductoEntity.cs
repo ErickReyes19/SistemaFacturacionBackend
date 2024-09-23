@@ -1,9 +1,13 @@
 ﻿namespace Sistema_Facturacion.models.Producto
 {
-    public class ProductoEnitity
+    public class ProductoEntity
     {
-        public String Id {  get; set; }
-        public string Nombre { get; set; }
-        public decimal Precio { get; set; }
+        public string ProductoId { get; set; }      
+        public string NombreProducto { get; set; }   
+        public decimal PrecioProducto { get; set; }  
+        public string Descripcion { get; set; }      
+        public DateTime FechaRegistro { get; set; }  
+        public int Activo { get; set; }              
+        public string CategoriaId { get; set; }      
     }
 }

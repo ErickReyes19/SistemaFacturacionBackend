@@ -1,5 +1,4 @@
-﻿using Sistema_Facturacion.models.Producto.Sistema_Facturacion.Configurations;
-
+﻿
 namespace Sistema_Facturacion.models.Clientes
 {
     public class ClienteDto
@@ -10,7 +9,7 @@ namespace Sistema_Facturacion.models.Clientes
         public string Correo { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
-        public bool Activo { get; set; } // Usar bool aquí
+        public bool Activo { get; set; }
         public DateTime FechaRegistro { get; set; }
 
         public static ClienteDto FromEntity(ClienteEntity clienteEntity)
@@ -43,9 +42,5 @@ namespace Sistema_Facturacion.models.Clientes
             };
         }
 
-        internal static object FromEntity(ClienteConfig clientesEntity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

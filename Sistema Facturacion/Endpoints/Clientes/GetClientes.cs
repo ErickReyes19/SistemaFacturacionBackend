@@ -36,7 +36,7 @@ namespace Sistema_Facturacion.Endpoints.Clientes
                 return Results.BadRequest("El cliente no puede ser nulo.");
             }
 
-            var clienteEntity = ClienteEntity.ToEntity(clienteDto);
+            var clienteEntity = ClienteDto.ToEntity(clienteDto);
             clienteEntity.ClienteId = Guid.NewGuid().ToString();
             clienteEntity.Activo = 1;
             clienteEntity.FechaRegistro = DateTime.Now;

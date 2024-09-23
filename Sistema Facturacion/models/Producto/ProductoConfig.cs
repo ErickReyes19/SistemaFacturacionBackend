@@ -1,26 +1,44 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Sistema_Facturacion.models.Producto;
 
-namespace Sistema_Facturacion.models.Producto
+namespace Sistema_Facturacion.Configurations
 {
-    public class ProductoConfig : IEntityTypeConfiguration<ProductoEnitity>
+    public class ProductoConfig : IEntityTypeConfiguration<ProductoEntity>
     {
-        public void Configure(EntityTypeBuilder<ProductoEnitity> builder)
+        public void Configure(EntityTypeBuilder<ProductoEntity> builder)
         {
-            builder.ToTable("PRODUCTOS", "SISTEMAFACTURACION"); // Especifica el esquema aquí
+            builder.ToTable("PRODUCTOS", "SISTEMAFACTURACION");
 
-            builder.Property(p => p.Id)
-                   .HasColumnName("ID_PRODUCTO")
+            builder.HasKey(p => p.ProductoId); 
+
+            builder.Property(p => p.ProductoId)
+                   .HasColumnName("PRODUCTO_ID")
                    .IsRequired();
 
-            builder.Property(p => p.Nombre)
+            builder.Property(p => p.NombreProducto)
                    .HasColumnName("NOMBRE_PRODUCTO")
                    .IsRequired()
                    .HasMaxLength(100);
 
-            builder.Property(p => p.Precio)
+            builder.Property(p => p.PrecioProducto)
                    .HasColumnName("PRECIO_PRODUCTO")
-                   .HasColumnType("NUMBER(10, 2)")
+                   .IsRequired(); 
+
+            builder.Property(p => p.Descripcion)
+                   .HasColumnName("DESCRIPCION")
+                   .HasMaxLength(500); 
+
+            builder.Property(p => p.FechaRegistro)
+                   .HasColumnName("FECHA_REGISTRO")
+                   .HasDefaultValueSql("CURRENT_TIMESTAMP"); 
+
+            builder.Property(p => p.Activo)
+                   .HasColumnName("ACTIVO")
+                   .IsRequired(); 
+
+            builder.Property(p => p.CategoriaId)
+                   .HasColumnName("CATEGORIA_ID")
                    .IsRequired();
         }
     }

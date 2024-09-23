@@ -1,4 +1,4 @@
-﻿namespace Sistema_Facturacion.models.Producto
+﻿namespace Sistema_Facturacion.models
 {
     using global::Sistema_Facturacion.models.Clientes;
     using Microsoft.EntityFrameworkCore;
