@@ -1,0 +1,25 @@
+meta {
+  name: PostCortizciones
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/detallefactura
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJwZXJtaXNzaW9ucyI6WyI4Zjc0NTVkNC1lMGYzLTQ3NGEtYjJmYS02Y2E4MTE5NTE2ZmQiLCJjMTAxNWVlZC03NjZjLTQ0ZDEtYThkNC1hZjE3MTIwYjc5MjYiLCJiZGYyYWEzZi1jYWEyLTQ4ODQtOTIxOC03MTRlYzdlOTVhN2IiLCI3ZjMxZjhkZC00MzNkLTQ3YzMtODI2ZC01ODkzNzk5ZDI1NWMiXSwiZXhwIjoxNzI3MTUyNjM5fQ.LiJcRhj6jvQiTeDz9KwrFZEbVLntT0Vctn8rLp-w1C4
+}
+
+body:json {
+  {
+    "subtotal": 4000,
+    "precioUnitario": 4000,
+    "cantidad": 1,
+    "productoId": "a22209be-4306-4bd6-a119-db4e22c1d6b4",
+    "facturaId": "d775459e-1332-47cb-86c1-4f7abf2204f7"
+  }
+}

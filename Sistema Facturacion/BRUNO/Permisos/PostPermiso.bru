@@ -1,0 +1,17 @@
+meta {
+  name: PostPermiso
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/permisos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Ver Reportes"
+  }
+}

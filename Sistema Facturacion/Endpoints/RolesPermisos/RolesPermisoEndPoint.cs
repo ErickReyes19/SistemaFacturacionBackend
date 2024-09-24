@@ -8,8 +8,8 @@ namespace Sistema_Facturacion.Endpoints.RolesPermisos
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapPost("api/roles-permisos/upsert", UpsertRolesPermisos);
-            app.MapGet("api/roles-permisos/{rolId}", GetPermisosPorRol);
+            app.MapPost("api/roles-permisos/upsert", UpsertRolesPermisos).RequireAuthorization();
+            app.MapGet("api/roles-permisos/{rolId}", GetPermisosPorRol).RequireAuthorization();
         }
 
         private static async Task<IResult> UpsertRolesPermisos(RolesPermisosUpsertDto rolesPermisosDto, AppDbContext context)
@@ -70,7 +70,7 @@ namespace Sistema_Facturacion.Endpoints.RolesPermisos
                       })
                 .ToListAsync();
 
-            if (permisos == null || !permisos.Any())
+            if (permisos == null || permisos.Count == 0)
             {
                 return Results.NotFound("No se encontraron permisos para este rol.");
             }

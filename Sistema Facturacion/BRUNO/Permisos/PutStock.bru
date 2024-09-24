@@ -1,0 +1,18 @@
+meta {
+  name: PutStock
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5150/api/permisos/31aeec91-54cd-412d-8a0d-f5896a2037bd
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Crear usuarios",
+    "activo": true
+  }
+}

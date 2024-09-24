@@ -3,23 +3,23 @@ using Microsoft.EntityFrameworkCore;
 using Sistema_Facturacion.data;
 using Sistema_Facturacion.models.Usuarios;
 
-namespace Sistema_Facturacion.Endpoints.Usuarios
+namespace Sistema_Facturacion.Endpoints.Usuario
 {
     public class UsuarioEndpointBuilder
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapGet("api/usuarios", GetUsuarios);
-            app.MapPost("api/usuarios", PostUsuario);
-            app.MapGet("api/usuarios/{id}", GetUsuarioById);
-            app.MapPut("api/usuarios/{id}", UpdateUsuario);
+            app.MapGet("api/usuarios", GetUsuarios).RequireAuthorization();
+            app.MapPost("api/usuarios", PostUsuario).RequireAuthorization();
+            app.MapGet("api/usuarios/{id}", GetUsuarioById).RequireAuthorization();
+            app.MapPut("api/usuarios/{id}", UpdateUsuario).RequireAuthorization();
         }
 
         private static async Task<IResult> GetUsuarios(AppDbContext context)
         {
             var usuarios = await context.Usuarios.ToListAsync();
 
-            if (usuarios == null || !usuarios.Any())
+            if (usuarios == null || usuarios.Count == 0)
             {
                 return Results.NotFound("No se encontraron usuarios.");
             }
@@ -45,9 +45,9 @@ namespace Sistema_Facturacion.Endpoints.Usuarios
             }
 
             var usuarioEntity = UsuarioDto.ToEntity(usuarioDto);
-            usuarioEntity.UsuarioId = Guid.NewGuid().ToString(); 
-            usuarioEntity.Activo = 1; 
-            usuarioEntity.FechaCreacion = DateTime.Now; 
+            usuarioEntity.UsuarioId = Guid.NewGuid().ToString();
+            usuarioEntity.Activo = 1;
+            usuarioEntity.FechaCreacion = DateTime.Now;
 
             await context.Usuarios.AddAsync(usuarioEntity);
             await context.SaveChangesAsync();

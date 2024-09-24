@@ -9,10 +9,10 @@ namespace Sistema_Facturacion.Endpoints.Clientes
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapGet("api/clientes", GetClientes);
-            app.MapPost("api/clientes", PostClientes);
-            app.MapGet("api/clientes/{id}", GetClienteById); 
-            app.MapPut("api/clientes/{id}", UpdateCliente);
+            app.MapGet("api/clientes", GetClientes).RequireAuthorization();
+            app.MapPost("api/clientes", PostClientes).RequireAuthorization();
+            app.MapGet("api/clientes/{id}", GetClienteById).RequireAuthorization(); 
+            app.MapPut("api/clientes/{id}", UpdateCliente).RequireAuthorization();
         }
 
         private static async Task<IResult> GetClientes(AppDbContext context)

@@ -1,0 +1,20 @@
+meta {
+  name: PostCliente
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/clientes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Erick",
+    "correo": "erick@gmail.com",
+    "contrasena": "Erick.123",
+    "rolId": "c302ff17-16b1-48c6-ab1f-7e0956edb01c"
+  }
+}

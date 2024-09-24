@@ -5,16 +5,16 @@ using Sistema_Facturacion.models.Categoria;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Sistema_Facturacion.Endpoints.Categorias
+namespace Sistema_Facturacion.Endpoints.Categoria
 {
     public class CategoriasEndpointBuilder
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapGet("api/categorias", GetCategorias);
-            app.MapPost("api/categorias", PostCategoria);
-            app.MapGet("api/categorias/{id}", GetCategoriaById);
-            app.MapPut("api/categorias/{id}", UpdateCategoria);
+            app.MapGet("api/categorias", GetCategorias).RequireAuthorization();
+            app.MapPost("api/categorias", PostCategoria).RequireAuthorization();
+            app.MapGet("api/categorias/{id}", GetCategoriaById).RequireAuthorization();
+            app.MapPut("api/categorias/{id}", UpdateCategoria).RequireAuthorization();
         }
 
         private static async Task<IResult> GetCategorias(AppDbContext context)
@@ -52,8 +52,8 @@ namespace Sistema_Facturacion.Endpoints.Categorias
             }
 
             var categoriaEntity = CategoriaDto.ToEntity(categoriaDto);
-            categoriaEntity.CategoriaId = Guid.NewGuid().ToString(); 
-            categoriaEntity.FechaCreacion = DateTime.Now; 
+            categoriaEntity.CategoriaId = Guid.NewGuid().ToString();
+            categoriaEntity.FechaCreacion = DateTime.Now;
             categoriaEntity.Activo = 1;
 
             await context.Categorias.AddAsync(categoriaEntity);

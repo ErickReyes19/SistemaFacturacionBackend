@@ -1,0 +1,15 @@
+meta {
+  name: GetFacturas
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:5150/api/facturas
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJwZXJtaXNzaW9ucyI6WyI4Zjc0NTVkNC1lMGYzLTQ3NGEtYjJmYS02Y2E4MTE5NTE2ZmQiLCJjMTAxNWVlZC03NjZjLTQ0ZDEtYThkNC1hZjE3MTIwYjc5MjYiLCJiZGYyYWEzZi1jYWEyLTQ4ODQtOTIxOC03MTRlYzdlOTVhN2IiLCI3ZjMxZjhkZC00MzNkLTQ3YzMtODI2ZC01ODkzNzk5ZDI1NWMiXSwiZXhwIjoxNzI3MTU4NzMxfQ.N1zp1urNx1hoSAGrbYkXDos8ShJ5U5brOqQcYDHcI8A
+}

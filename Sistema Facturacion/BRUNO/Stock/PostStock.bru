@@ -1,0 +1,18 @@
+meta {
+  name: PostStock
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/stock
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "productoId": "ecdc465e-6ed5-4356-95cb-24c17daa6a19",
+    "cantidad": 10
+  }
+}

@@ -11,10 +11,10 @@ namespace Sistema_Facturacion.Endpoints.Permisos
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapGet("api/permisos", GetPermisos);
-            app.MapPost("api/permisos", PostPermiso);
-            app.MapGet("api/permisos/{id}", GetPermisoById);
-            app.MapPut("api/permisos/{id}", UpdatePermiso);
+            app.MapGet("api/permisos", GetPermisos).RequireAuthorization();
+            app.MapPost("api/permisos", PostPermiso).RequireAuthorization();
+            app.MapGet("api/permisos/{id}", GetPermisoById).RequireAuthorization();
+            app.MapPut("api/permisos/{id}", UpdatePermiso).RequireAuthorization();
         }
 
         private static async Task<IResult> GetPermisos(AppDbContext context)

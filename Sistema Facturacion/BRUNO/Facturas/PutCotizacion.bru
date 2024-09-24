@@ -1,0 +1,30 @@
+meta {
+  name: PutCotizacion
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5150/api/facturas/d775459e-1332-47cb-86c1-4f7abf2204f7
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJwZXJtaXNzaW9ucyI6WyI4Zjc0NTVkNC1lMGYzLTQ3NGEtYjJmYS02Y2E4MTE5NTE2ZmQiLCJjMTAxNWVlZC03NjZjLTQ0ZDEtYThkNC1hZjE3MTIwYjc5MjYiLCJiZGYyYWEzZi1jYWEyLTQ4ODQtOTIxOC03MTRlYzdlOTVhN2IiLCI3ZjMxZjhkZC00MzNkLTQ3YzMtODI2ZC01ODkzNzk5ZDI1NWMiXSwiZXhwIjoxNzI3MTU4NzMxfQ.N1zp1urNx1hoSAGrbYkXDos8ShJ5U5brOqQcYDHcI8A
+}
+
+body:json {
+  {
+    "usuarioId": "97bf6a8f-14c3-43a2-b092-3f4c1baef838",
+    "clienteId": "8aa0011f-c45c-4b64-9c01-cd025ef5a22d",
+    "total": 11100,
+    "estado": "Valida",
+    "notas": "Factura con 4 productos",
+    "montoPagado": 11500,
+    "cambio": 300,
+    "fechaCreacion": "2024-09-24T00:01:39.019635",
+    "activo": true,
+    "idMetodoPago": "1584ca3e-233d-44af-b399-ed12ad9d0f68"
+  }
+}
