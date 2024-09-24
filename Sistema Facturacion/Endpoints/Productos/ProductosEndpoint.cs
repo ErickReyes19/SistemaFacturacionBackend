@@ -10,10 +10,10 @@ namespace Sistema_Facturacion.Endpoints.Productos
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapGet("api/productos", GetProductos);
-            app.MapPost("api/productos", PostProductos);
-            app.MapGet("api/productos/{id}", GetProductoById);
-            app.MapPut("api/productos/{id}", UpdateProducto);
+            app.MapGet("api/productos", GetProductos).RequireAuthorization();
+            app.MapPost("api/productos", PostProductos).RequireAuthorization();
+            app.MapGet("api/productos/{id}", GetProductoById).RequireAuthorization();
+            app.MapPut("api/productos/{id}", UpdateProducto).RequireAuthorization();
         }
 
         private static async Task<IResult> GetProductos(AppDbContext context)

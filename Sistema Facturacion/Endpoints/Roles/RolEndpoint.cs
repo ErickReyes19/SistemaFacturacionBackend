@@ -11,10 +11,10 @@ namespace Sistema_Facturacion.Endpoints.Roles
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapGet("api/roles", GetRoles);
-            app.MapPost("api/roles", PostRol);
-            app.MapGet("api/roles/{id}", GetRolById);
-            app.MapPut("api/roles/{id}", UpdateRol);
+            app.MapGet("api/roles", GetRoles).RequireAuthorization();
+            app.MapPost("api/roles", PostRol).RequireAuthorization();
+            app.MapGet("api/roles/{id}", GetRolById).RequireAuthorization();
+            app.MapPut("api/roles/{id}", UpdateRol).RequireAuthorization();
         }
 
         private static async Task<IResult> GetRoles(AppDbContext context)

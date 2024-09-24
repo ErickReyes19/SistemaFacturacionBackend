@@ -1,6 +1,9 @@
 ﻿using Sistema_Facturacion.Endpoints.Auth;
 using Sistema_Facturacion.Endpoints.Categorias;
 using Sistema_Facturacion.Endpoints.Clientes;
+using Sistema_Facturacion.Endpoints.Cotizaciones;
+using Sistema_Facturacion.Endpoints.DetalleCotizacion;
+using Sistema_Facturacion.Endpoints.MetodoPago;
 using Sistema_Facturacion.Endpoints.Permisos;
 using Sistema_Facturacion.Endpoints.Productos;
 using Sistema_Facturacion.Endpoints.Roles;
@@ -23,6 +26,9 @@ namespace Sistema_Facturacion.Endpoints
             RolesPermisosEndpointBuilder.ConfigureEndpoints(app);
             UsuarioEndpointBuilder.ConfigureEndpoints(app);
             AuthEndpointBuilder.ConfigureEndpoints(app);
+            MetodoPagoEndpointBuilder.ConfigureEndpoints(app);
+            CotizacionesEndpointBuilder.ConfigureEndpoints(app);
+            DetalleCotizacionEndpointBuilder.ConfigureEndpoints(app);
         }
     }
 }

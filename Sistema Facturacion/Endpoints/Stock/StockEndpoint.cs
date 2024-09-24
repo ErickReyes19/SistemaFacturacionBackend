@@ -9,10 +9,10 @@ namespace Sistema_Facturacion.Endpoints.Stock
     {
         public static void ConfigureEndpoints(WebApplication app)
         {
-            app.MapGet("api/stock", GetStock);
-            app.MapPost("api/stock", PostStock);
-            app.MapGet("api/stock/{id}", GetStockById);
-            app.MapPut("api/stock/{id}", UpdateStock);
+            app.MapGet("api/stock", GetStock).RequireAuthorization();
+            app.MapPost("api/stock", PostStock).RequireAuthorization();
+            app.MapGet("api/stock/{id}", GetStockById).RequireAuthorization();
+            app.MapPut("api/stock/{id}", UpdateStock).RequireAuthorization();
         }
 
         private static async Task<IResult> GetStock(AppDbContext context)

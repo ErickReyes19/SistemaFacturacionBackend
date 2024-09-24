@@ -1,11 +1,9 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Sistema_Facturacion.Endpoints.Productos;
 using Sistema_Facturacion.data;
-using Sistema_Facturacion.Endpoints.Clientes;
 using Sistema_Facturacion.Endpoints;
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,42 +12,45 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Crear una variable para la cadena de conexión
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-// Imprimir la cadena de conexión en la consola
-Console.WriteLine($"Cadena de conexión: {connectionString}");
-
-// Registrar el contexto de la base de datos usando la variable
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseOracle(connectionString));
-
-// Configurar la autenticación JWT
+// Registrar la configuración de autenticación JWT
 var jwtKey = builder.Configuration["Jwt:Key"];
-builder.Services.AddSingleton(new AuthService(jwtKey));
+var key = Encoding.UTF8.GetBytes(jwtKey);
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false, // No validar el Issuer
+        ValidateAudience = false, // No validar la audiencia
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ClockSkew = TimeSpan.Zero // Para evitar retrasos en la expiración del token
+    };
+});
+
+// Registrar el contexto de la base de datos y el servicio AuthService
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddSingleton(new AuthService(jwtKey));
 
 var app = builder.Build();
 
-// Configurar la tubería HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseAuthentication(); // Agregar esto antes de UseAuthorization
+// Configurar autenticación
+app.UseAuthentication(); // Añadir el middleware de autenticación antes de la autorización
 app.UseAuthorization();
 
-// Mapea el endpoint de la fecha y hora actual
-app.MapGet("/", () =>
-{
-    var currentDateTime = DateTime.Now;
-    return $"API Sistemas activo. Fecha y hora actual: {currentDateTime}";
-});
-
 app.ConfigureAllEndpoints();
-// Mapea otros controladores
-app.MapControllers();
-
 app.Run();
