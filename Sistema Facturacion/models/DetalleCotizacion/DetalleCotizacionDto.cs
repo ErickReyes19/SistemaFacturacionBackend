@@ -2,16 +2,18 @@
 {
     public class DetalleCotizacionDto
     {
-        public string CotizacionId { get; set; }
-        public string ProductoId { get; set; }
-        public int Cantidad { get; set; }
-        public decimal Precio { get; set; }
-        public decimal Subtotal { get; set; }
+        public string DetalleCotizacionId { get; set; }  
+        public string CotizacionId { get; set; }         
+        public string ProductoId { get; set; }           
+        public int Cantidad { get; set; }                
+        public decimal Precio { get; set; }              
+        public decimal Subtotal { get; set; }            
 
         public static DetalleCotizacionDto FromEntity(DetalleCotizacionEntity detalleCotizacion)
         {
             return new DetalleCotizacionDto
             {
+                DetalleCotizacionId = detalleCotizacion.DetalleCotizacionId,  
                 CotizacionId = detalleCotizacion.CotizacionId,
                 ProductoId = detalleCotizacion.ProductoId,
                 Cantidad = detalleCotizacion.Cantidad,
@@ -24,7 +26,7 @@
         {
             return new DetalleCotizacionEntity
             {
-                DetalleCotizacionId = Guid.NewGuid().ToString(),
+                DetalleCotizacionId = detalleCotizacionDto.DetalleCotizacionId,
                 CotizacionId = detalleCotizacionDto.CotizacionId,
                 ProductoId = detalleCotizacionDto.ProductoId,
                 Cantidad = detalleCotizacionDto.Cantidad,

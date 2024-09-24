@@ -1,11 +1,11 @@
 meta {
-  name: PutCliente
+  name: PutMetodoPago
   type: http
   seq: 4
 }
 
 put {
-  url: http://localhost:5150/api/clientes/afd5daa7-d4b3-4b66-84d6-613ae1ae42e0
+  url: http://localhost:5150/api/metodospago/85b1c04a-fa19-4bf7-9dbc-740ce1704c9d
   body: json
   auth: bearer
 }
@@ -16,10 +16,7 @@ auth:bearer {
 
 body:json {
   {
-    "nombre": "Erick Jose",
-    "apellido": "Reyes Pineda",
-    "correo": "ericasdkjosepisnesada33@gmail.com",
-    "telefono": "88346201",
-    "direccion": "jan Pedro"
+    "nombre": "Tarjeta Debito",
+    "activo":true
   }
 }

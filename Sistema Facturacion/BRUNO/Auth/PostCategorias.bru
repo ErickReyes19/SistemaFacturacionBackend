@@ -1,0 +1,18 @@
+meta {
+  name: PostCategorias
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/categorias
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Telefonos",
+    "descripcion": "Telefonos de las diferentes marcas"
+  }
+}

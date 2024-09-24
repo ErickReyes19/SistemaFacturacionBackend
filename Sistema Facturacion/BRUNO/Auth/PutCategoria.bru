@@ -1,0 +1,19 @@
+meta {
+  name: PutCategoria
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5150/api/categorias/754cb87e-416f-4419-bdca-945f5a142486
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Tablets",
+    "descripcion": "Tablets de las diferentes marcas",
+    "activo": false
+  }
+}

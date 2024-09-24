@@ -1,0 +1,18 @@
+meta {
+  name: PutRoles
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5150/api/roles/c302ff17-16b1-48c6-ab1f-7e0956edb01c
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Administrador",
+    "activo" : true
+  }
+}

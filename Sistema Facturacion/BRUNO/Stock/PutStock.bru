@@ -1,0 +1,18 @@
+meta {
+  name: PutStock
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:5150/api/stock/ea875fb6-8d88-4805-962c-b11c9c1ad41a
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "productoId": "ecdc465e-6ed5-4356-95cb-24c17daa6a19",
+    "cantidad": 2
+  }
+}

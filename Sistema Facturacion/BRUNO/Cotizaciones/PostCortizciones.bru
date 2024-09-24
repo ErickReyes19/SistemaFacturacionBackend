@@ -1,0 +1,26 @@
+meta {
+  name: PostCortizciones
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/cotizaciones
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJwZXJtaXNzaW9ucyI6WyI4Zjc0NTVkNC1lMGYzLTQ3NGEtYjJmYS02Y2E4MTE5NTE2ZmQiLCJjMTAxNWVlZC03NjZjLTQ0ZDEtYThkNC1hZjE3MTIwYjc5MjYiLCJiZGYyYWEzZi1jYWEyLTQ4ODQtOTIxOC03MTRlYzdlOTVhN2IiLCI3ZjMxZjhkZC00MzNkLTQ3YzMtODI2ZC01ODkzNzk5ZDI1NWMiXSwiZXhwIjoxNzI3MTUyNjM5fQ.LiJcRhj6jvQiTeDz9KwrFZEbVLntT0Vctn8rLp-w1C4
+}
+
+body:json {
+  {
+    "clienteId": "afd5daa7-d4b3-4b66-84d6-613ae1ae42e0",
+    "usuarioId": "97bf6a8f-14c3-43a2-b092-3f4c1baef838",
+    "validez": "2024-09-29",
+    "observacion": "Cotizacion para 3 articulos",
+    "total": 14000
+  }
+  
+}

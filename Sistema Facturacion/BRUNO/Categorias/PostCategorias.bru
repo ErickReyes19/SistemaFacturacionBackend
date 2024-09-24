@@ -1,0 +1,22 @@
+meta {
+  name: PostCategorias
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5150/api/categorias
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJwZXJtaXNzaW9ucyI6WyI4Zjc0NTVkNC1lMGYzLTQ3NGEtYjJmYS02Y2E4MTE5NTE2ZmQiLCJjMTAxNWVlZC03NjZjLTQ0ZDEtYThkNC1hZjE3MTIwYjc5MjYiLCJiZGYyYWEzZi1jYWEyLTQ4ODQtOTIxOC03MTRlYzdlOTVhN2IiLCI3ZjMxZjhkZC00MzNkLTQ3YzMtODI2ZC01ODkzNzk5ZDI1NWMiXSwiZXhwIjoxNzI3MTQ4Nzk1fQ.a5RSBcEA0FPxKL9trB_kwkVomPVxhUjZKyfOemaPQOc
+}
+
+body:json {
+  {
+    "nombre": "Telefonos",
+    "descripcion": "Telefonos de las diferentes marcas"
+  }
+}
