@@ -1,8 +1,7 @@
-﻿namespace Sistema_Facturacion.Configurations
+﻿namespace Sistema_Facturacion.models.Cotizacion
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Sistema_Facturacion.models.Cotizacion;
 
     public class CotizacionConfig : IEntityTypeConfiguration<CotizacionEntity>
     {

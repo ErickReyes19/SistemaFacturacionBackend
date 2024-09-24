@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Sistema_Facturacion.data;
 using Sistema_Facturacion.models.Usuarios;
 
-namespace Sistema_Facturacion.Endpoints.Usuarios
+namespace Sistema_Facturacion.Endpoints.Usuario
 {
     public class UsuarioEndpointBuilder
     {
@@ -19,7 +19,7 @@ namespace Sistema_Facturacion.Endpoints.Usuarios
         {
             var usuarios = await context.Usuarios.ToListAsync();
 
-            if (usuarios == null || !usuarios.Any())
+            if (usuarios == null || usuarios.Count == 0)
             {
                 return Results.NotFound("No se encontraron usuarios.");
             }
@@ -45,9 +45,9 @@ namespace Sistema_Facturacion.Endpoints.Usuarios
             }
 
             var usuarioEntity = UsuarioDto.ToEntity(usuarioDto);
-            usuarioEntity.UsuarioId = Guid.NewGuid().ToString(); 
-            usuarioEntity.Activo = 1; 
-            usuarioEntity.FechaCreacion = DateTime.Now; 
+            usuarioEntity.UsuarioId = Guid.NewGuid().ToString();
+            usuarioEntity.Activo = 1;
+            usuarioEntity.FechaCreacion = DateTime.Now;
 
             await context.Usuarios.AddAsync(usuarioEntity);
             await context.SaveChangesAsync();

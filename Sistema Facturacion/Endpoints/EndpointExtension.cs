@@ -1,15 +1,17 @@
 ﻿using Sistema_Facturacion.Endpoints.Auth;
-using Sistema_Facturacion.Endpoints.Categorias;
+using Sistema_Facturacion.Endpoints.Categoria;
 using Sistema_Facturacion.Endpoints.Clientes;
 using Sistema_Facturacion.Endpoints.Cotizaciones;
 using Sistema_Facturacion.Endpoints.DetalleCotizacion;
+using Sistema_Facturacion.Endpoints.DetalleFactura;
+using Sistema_Facturacion.Endpoints.Factura;
 using Sistema_Facturacion.Endpoints.MetodoPago;
 using Sistema_Facturacion.Endpoints.Permisos;
 using Sistema_Facturacion.Endpoints.Productos;
 using Sistema_Facturacion.Endpoints.Roles;
 using Sistema_Facturacion.Endpoints.RolesPermisos;
 using Sistema_Facturacion.Endpoints.Stock;
-using Sistema_Facturacion.Endpoints.Usuarios;
+using Sistema_Facturacion.Endpoints.Usuario;
 
 namespace Sistema_Facturacion.Endpoints
 {
@@ -29,6 +31,8 @@ namespace Sistema_Facturacion.Endpoints
             MetodoPagoEndpointBuilder.ConfigureEndpoints(app);
             CotizacionesEndpointBuilder.ConfigureEndpoints(app);
             DetalleCotizacionEndpointBuilder.ConfigureEndpoints(app);
+            FacturasEndpointBuilder.ConfigureEndpoints(app);
+            DetalleFacturaEndpointBuilder.ConfigureEndpoints(app);
         }
     }
 }

@@ -4,6 +4,8 @@ using Sistema_Facturacion.models.Categoria;
 using Sistema_Facturacion.models.Clientes;
 using Sistema_Facturacion.models.Cotizacion;
 using Sistema_Facturacion.models.DetalleCotizacion;
+using Sistema_Facturacion.models.DetalleFactura;
+using Sistema_Facturacion.models.Factura;
 using Sistema_Facturacion.models.MetodoPago;
 using Sistema_Facturacion.models.Permiso;
 using Sistema_Facturacion.models.Producto;
@@ -30,6 +32,8 @@ namespace Sistema_Facturacion.data
         public DbSet<MetodoPagoEntity> MetodoPagos { get; set; }
         public DbSet<CotizacionEntity> Cotizaciones { get; set; }
         public DbSet<DetalleCotizacionEntity> DetalleCotizacion { get; set; }
+        public DbSet<FacturaEntity> Facturas { get; set; }
+        public DbSet<DetalleFacturaEntity> DetalleFactura { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,6 +50,8 @@ namespace Sistema_Facturacion.data
             modelBuilder.ApplyConfiguration(new MetodoPagoConfig());
             modelBuilder.ApplyConfiguration(new CotizacionConfig());
             modelBuilder.ApplyConfiguration(new DetalleCotizacionConfig());
+            modelBuilder.ApplyConfiguration(new FacturaConfig());
+            modelBuilder.ApplyConfiguration(new DetalleFacturaConfig());
         }
     }
 }

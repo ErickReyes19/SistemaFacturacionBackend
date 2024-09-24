@@ -2,8 +2,8 @@
 {
     public class MetodoPagoEntity
     {
-        public string MetodoPagoId { get; set; }
-        public string Nombre { get; set; }
+        public required string MetodoPagoId { get; set; }
+        public required string Nombre { get; set; }
         public DateTime FechaCreacion { get; set; }
         public int Activo { get; set; }
     }

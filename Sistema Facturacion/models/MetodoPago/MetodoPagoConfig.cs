@@ -1,8 +1,7 @@
-﻿namespace Sistema_Facturacion.Configurations
+﻿namespace Sistema_Facturacion.models.MetodoPago
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Sistema_Facturacion.models.MetodoPago;
 
     public class MetodoPagoConfig : IEntityTypeConfiguration<MetodoPagoEntity>
     {

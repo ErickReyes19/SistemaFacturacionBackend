@@ -2,12 +2,11 @@
 {
     public class MetodoPagoDto
     {
-        public string MetodoPagoId { get; set; }  // Agregado el ID
-        public string Nombre { get; set; }
-        public DateTime FechaCreacion { get; set; }  // Agregada la FechaCreacion
+        public required string MetodoPagoId { get; set; }  
+        public required string Nombre { get; set; }
+        public DateTime FechaCreacion { get; set; }  
         public bool Activo { get; set; }
 
-        // Método para convertir desde la entidad hacia el DTO
         public static MetodoPagoDto FromEntity(MetodoPagoEntity metodoPago)
         {
             return new MetodoPagoDto

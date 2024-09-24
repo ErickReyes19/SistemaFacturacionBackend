@@ -70,7 +70,7 @@ namespace Sistema_Facturacion.Endpoints.RolesPermisos
                       })
                 .ToListAsync();
 
-            if (permisos == null || !permisos.Any())
+            if (permisos == null || permisos.Count == 0)
             {
                 return Results.NotFound("No se encontraron permisos para este rol.");
             }
