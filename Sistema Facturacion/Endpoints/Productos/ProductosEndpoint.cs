@@ -11,6 +11,7 @@ namespace Sistema_Facturacion.Endpoints.Productos
         public static void ConfigureEndpoints(WebApplication app)
         {
             app.MapGet("api/productos", GetProductos).RequireAuthorization();
+            app.MapGet("api/productos/activos", GetProductosActivos).RequireAuthorization();
             app.MapPost("api/productos", PostProductos).RequireAuthorization();
             app.MapGet("api/productos/{id}", GetProductoById).RequireAuthorization();
             app.MapPut("api/productos/{id}", UpdateProducto).RequireAuthorization();
@@ -18,17 +19,58 @@ namespace Sistema_Facturacion.Endpoints.Productos
 
         private static async Task<IResult> GetProductos(AppDbContext context)
         {
-            var productosEntity = await context.Productos.ToListAsync();
+            var productosEntity = await context.Productos
+                .ToListAsync();
 
             if (productosEntity == null || productosEntity.Count == 0)
             {
                 return Results.NotFound("No se encontraron productos.");
             }
 
-            var productosDto = productosEntity.Select(p => ProductoDto.FromEntity(p)).ToList();
+            var categorias = await context.Categorias.ToListAsync(); // Cargamos todas las categorías una vez
+
+            var productosDto = productosEntity.Select(p => new
+            {
+                p.ProductoId,
+                p.NombreProducto,
+                p.PrecioProducto,
+                p.Descripcion,
+                p.FechaRegistro,
+                p.Activo,
+                CategoriaNombre = categorias.FirstOrDefault(c => c.CategoriaId == p.CategoriaId)?.Nombre // Obtenemos el nombre de la categoría
+            }).ToList();
 
             return Results.Ok(productosDto);
         }
+
+        private static async Task<IResult> GetProductosActivos(AppDbContext context)
+        {
+            var productosEntity = await context.Productos
+                .Where(p => p.Activo == 1)
+                .ToListAsync();
+
+            if (productosEntity == null || productosEntity.Count == 0)
+            {
+                return Results.NotFound("No se encontraron productos.");
+            }
+
+            var categorias = await context.Categorias.ToListAsync(); 
+
+            var productosDto = productosEntity.Select(p => new
+            {
+                p.ProductoId,
+                p.NombreProducto,
+                p.PrecioProducto,
+                p.Descripcion,
+                p.FechaRegistro,
+                p.Activo,
+                CategoriaNombre = categorias.FirstOrDefault(c => c.CategoriaId == p.CategoriaId)?.Nombre 
+            }).ToList();
+
+            return Results.Ok(productosDto);
+        }
+
+
 
         private static async Task<IResult> GetProductoById(string id, AppDbContext context)
         {
@@ -79,7 +121,7 @@ namespace Sistema_Facturacion.Endpoints.Productos
             productoEntity.NombreProducto = productoDto.NombreProducto;
             productoEntity.PrecioProducto = productoDto.PrecioProducto;
             productoEntity.Descripcion = productoDto.Descripcion;
-            productoEntity.CategoriaId = productoDto.CategoriaId;
+            productoEntity.CategoriaId = productoDto.CategoriaNombre;
             productoEntity.Activo = productoDto.Activo ? 1 : 0;
 
 
