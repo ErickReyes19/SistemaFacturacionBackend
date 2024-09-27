@@ -1,0 +1,15 @@
+meta {
+  name: GetCategoriasActivas
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:5150/api/categorias/activas
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJVc3VhcmlvIjoiRXJpY2siLCJwZXJtaXNvcyI6WyJlbGltaW5hciB1c3VhcmlvcyIsIlZlciB1c3VhcmlvcyIsIlZlciBGYWN0dXJhcyIsIkFjdHVhbGl6YXIgdXN1YXJpb3MiXSwiZXhwIjoxNzI3NDEyMzExfQ.2IjYONpr7jhle_Glv3wHeAAXeiPmbqxvEoMlN5M4nuI
+}

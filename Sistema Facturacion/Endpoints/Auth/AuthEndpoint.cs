@@ -22,16 +22,17 @@ namespace Sistema_Facturacion.Endpoints.Auth
                 return Results.Unauthorized();
             }
 
-            // Obtener los permisos del rol del usuario
-            var permisos = await context.RolesPermisos
-                .Where(rp => rp.RolId == usuario.RolId)
-                .Select(rp => rp.PermisoId)
-                .ToListAsync();
+            var permisos = await (from rp in context.RolesPermisos
+                                  join p in context.Permisos on rp.PermisoId equals p.PermisoId
+                                  where rp.RolId == usuario.RolId
+                                  select p.Nombre 
+                                 ).ToListAsync();
 
-            // Generar el token
-            var token = authService.GenerateToken(usuario.UsuarioId, permisos);
+            var token = authService.GenerateToken(usuario.UsuarioId,usuario.Nombre, permisos);
 
             return Results.Ok(new { token });
         }
+
+
     }
 }

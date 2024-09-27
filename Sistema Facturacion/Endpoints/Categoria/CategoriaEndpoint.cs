@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Sistema_Facturacion.data;
 using Sistema_Facturacion.models.Categoria;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Sistema_Facturacion.Endpoints.Categoria
 {
@@ -15,6 +13,7 @@ namespace Sistema_Facturacion.Endpoints.Categoria
             app.MapPost("api/categorias", PostCategoria).RequireAuthorization();
             app.MapGet("api/categorias/{id}", GetCategoriaById).RequireAuthorization();
             app.MapPut("api/categorias/{id}", UpdateCategoria).RequireAuthorization();
+            app.MapGet("api/categorias/activas", GetCategoriasActivas).RequireAuthorization();
         }
 
         private static async Task<IResult> GetCategorias(AppDbContext context)
@@ -76,7 +75,7 @@ namespace Sistema_Facturacion.Endpoints.Categoria
                 return Results.NotFound("Categoría no encontrada.");
             }
 
-            // Actualizar los valores
+            
             categoriaEntity.Nombre = categoriaDto.Nombre;
             categoriaEntity.Descripcion = categoriaDto.Descripcion;
             categoriaEntity.Activo = categoriaDto.Activo ? 1 : 0;
@@ -85,5 +84,21 @@ namespace Sistema_Facturacion.Endpoints.Categoria
 
             return Results.Ok(categoriaEntity);
         }
+        private static async Task<IResult> GetCategoriasActivas(AppDbContext context)
+        {
+            var categoriasEntity = await context.Categorias
+                .Where(c => c.Activo == 1) 
+                .ToListAsync();
+
+            if (categoriasEntity == null || categoriasEntity.Count == 0)
+            {
+                return Results.NotFound("No se encontraron categorías activas.");
+            }
+
+            var categoriasDto = categoriasEntity.Select(c => CategoriaDto.FromEntity(c)).ToList();
+
+            return Results.Ok(categoriasDto);
+        }
     }
+
 }

@@ -12,17 +12,19 @@ public class AuthService
         _secretKey = secretKey;
     }
 
-    public string GenerateToken(string userId, List<string> permisos)
+    public string GenerateToken(string userId,string nombre, List<string> permisos)
     {
         var claims = new List<Claim>
         {
-            new Claim("userId", userId)
+            new Claim("userId", userId),
+            new Claim("Usuario", nombre)
         };
+
 
         // Añadir los permisos como claims
         foreach (var permiso in permisos)
         {
-            claims.Add(new Claim("permissions", permiso));
+            claims.Add(new Claim("permisos", permiso));
         }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
@@ -30,7 +32,7 @@ public class AuthService
 
         var token = new JwtSecurityToken(
             claims: claims,
-            expires: DateTime.Now.AddMinutes(30), // Duración del token
+            expires: DateTime.Now.AddMinutes(60), // Duración del token
             signingCredentials: creds);
 
         return new JwtSecurityTokenHandler().WriteToken(token);
