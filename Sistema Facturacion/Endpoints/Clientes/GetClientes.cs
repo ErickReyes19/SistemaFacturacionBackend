@@ -73,6 +73,7 @@ namespace Sistema_Facturacion.Endpoints.Clientes
             }
 
             clienteEntity.Nombre = clienteDto.Nombre;
+            clienteEntity.Identidad = clienteDto.Identidad;
             clienteEntity.Apellido = clienteDto.Apellido;
             clienteEntity.Correo = clienteDto.Correo;
             clienteEntity.Telefono = clienteDto.Telefono;

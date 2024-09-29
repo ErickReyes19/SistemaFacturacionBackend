@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Sistema_Facturacion.data;
 using Sistema_Facturacion.models.Permiso;
+using Sistema_Facturacion.models.Rol;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,9 +13,28 @@ namespace Sistema_Facturacion.Endpoints.Permisos
         public static void ConfigureEndpoints(WebApplication app)
         {
             app.MapGet("api/permisos", GetPermisos).RequireAuthorization();
+            app.MapGet("api/permisosactivos", GetPermisosActivos).RequireAuthorization();
             app.MapPost("api/permisos", PostPermiso).RequireAuthorization();
             app.MapGet("api/permisos/{id}", GetPermisoById).RequireAuthorization();
             app.MapPut("api/permisos/{id}", UpdatePermiso).RequireAuthorization();
+            app.MapDelete("api/permisos/{id}", DeletePermiso).RequireAuthorization();
+        }
+
+
+        private static async Task<IResult> GetPermisosActivos(AppDbContext context)
+        {
+            var permisosEntity = await context.Permisos
+                                           .Where(r => r.Activo == 1)
+                                           .ToListAsync();
+
+            if (permisosEntity == null || permisosEntity.Count == 0)
+            {
+                return Results.NotFound("No se encontraron permisos activos.");
+            }
+
+            var permisosDto = permisosEntity.Select(r => PermisoDto.FromEntity(r)).ToList();
+
+            return Results.Ok(permisosDto);
         }
 
         private static async Task<IResult> GetPermisos(AppDbContext context)
@@ -83,6 +103,21 @@ namespace Sistema_Facturacion.Endpoints.Permisos
             await context.SaveChangesAsync();
 
             return Results.Ok(permisoEntity);
+        }
+
+        private static async Task<IResult> DeletePermiso(string id, AppDbContext context)
+        {
+            var permisoEntity = await context.Permisos.FindAsync(id);
+
+            if (permisoEntity == null)
+            {
+                return Results.NotFound("Permiso no encontrado.");
+            }
+
+            context.Permisos.Remove(permisoEntity);
+            await context.SaveChangesAsync();
+
+            return Results.Ok($"Permiso con ID {id} eliminado correctamente.");
         }
     }
 }

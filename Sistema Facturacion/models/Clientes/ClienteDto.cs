@@ -4,6 +4,7 @@ namespace Sistema_Facturacion.models.Clientes
     public class ClienteDto
     {
         public string ClienteId { get; set; }
+        public string Identidad { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Correo { get; set; }
@@ -18,6 +19,7 @@ namespace Sistema_Facturacion.models.Clientes
             {
                 ClienteId = clienteEntity.ClienteId,
                 Nombre = clienteEntity.Nombre,
+                Identidad = clienteEntity.Identidad,
                 Apellido = clienteEntity.Apellido,
                 Correo = clienteEntity.Correo,
                 Telefono = clienteEntity.Telefono,
@@ -33,6 +35,7 @@ namespace Sistema_Facturacion.models.Clientes
             {
                 ClienteId = clienteDto.ClienteId,
                 Nombre = clienteDto.Nombre,
+                Identidad = clienteDto.Identidad,
                 Apellido = clienteDto.Apellido,
                 Correo = clienteDto.Correo,
                 Telefono = clienteDto.Telefono,

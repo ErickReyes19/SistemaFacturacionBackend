@@ -66,7 +66,7 @@ namespace Sistema_Facturacion.Endpoints.RolesPermisos
                       (rp, p) => new
                       {
                           rp.PermisoId,
-                          p.Nombre,  // Asumiendo que 'Nombre' es la propiedad del permiso que deseas
+                          p.Nombre,  
                       })
                 .ToListAsync();
 

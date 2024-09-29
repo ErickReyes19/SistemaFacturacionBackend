@@ -46,6 +46,10 @@
                        .HasColumnName("ACTIVO")
                        .IsRequired();
 
+                builder.Property(c => c.Identidad)
+                       .HasColumnName("IDENTIDAD")
+                       .IsRequired();
+
                 builder.Property(c => c.FechaRegistro)
                        .HasColumnName("FECHAREGISTRO")
                        .HasDefaultValueSql("CURRENT_TIMESTAMP");

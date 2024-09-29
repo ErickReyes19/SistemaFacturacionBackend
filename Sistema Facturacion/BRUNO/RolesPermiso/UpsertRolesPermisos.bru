@@ -1,15 +1,27 @@
 meta {
-  name: GetRol
+  name: UpsertRolesPermisos
   type: http
-  seq: 1
+  seq: 2
 }
 
-get {
-  url: http://localhost:5150/api/roles
-  body: none
+post {
+  url: http://localhost:5150/api/roles-permisos/upsert
+  body: json
   auth: bearer
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJVc3VhcmlvIjoiRXJpY2siLCJwZXJtaXNvcyI6WyJlbGltaW5hciB1c3VhcmlvcyIsIlZlciB1c3VhcmlvcyIsIlZlciBGYWN0dXJhcyIsIkFjdHVhbGl6YXIgdXN1YXJpb3MiXSwiZXhwIjoxNzI3NTczNjAxfQ.OKyJouH2adDAvyxkZFHqEuWTgBVGCeWEBWA320bE9N0
+}
+
+body:json {
+  {
+    "RolId": "c302ff17-16b1-48c6-ab1f-7e0956edb01c",  
+    "PermisosIds": [
+      "31aeec91-54cd-412d-8a0d-f5896a2037bd",
+      "c1015eed-766c-44d1-a8d4-af17120b7926",
+      "7f31f8dd-433d-47c3-826d-5893799d255c"
+    ]
+  }
+  
 }

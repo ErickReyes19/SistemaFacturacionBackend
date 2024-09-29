@@ -8,7 +8,8 @@
         public string Descripcion { get; set; }      
         public DateTime FechaRegistro { get; set; }  
         public bool Activo { get; set; }             
-        public string CategoriaNombre { get; set; }     
+        public string CategoriaNombre { get; set; }         
+        public int Stock { get; set; }     
 
        
         public static ProductoDto FromEntity(ProductoEntity entity)
@@ -21,7 +22,8 @@
                 Descripcion = entity.Descripcion,
                 FechaRegistro = entity.FechaRegistro,
                 Activo = entity.Activo == 1,
-                CategoriaNombre = entity.CategoriaId
+                CategoriaNombre = entity.CategoriaId,
+                Stock = entity.Stock
             };
         }
 
@@ -34,8 +36,9 @@
                 PrecioProducto = dto.PrecioProducto,
                 Descripcion = dto.Descripcion,
                 FechaRegistro = dto.FechaRegistro,
-                Activo = dto.Activo ? 1 : 0, 
-                CategoriaId = dto.CategoriaNombre
+                Activo = dto.Activo ? 1 : 0,
+                CategoriaId = dto.CategoriaNombre,
+                Stock = dto.Stock
             };
         }
     }

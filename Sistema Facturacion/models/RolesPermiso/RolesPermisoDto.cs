@@ -35,4 +35,12 @@
         public string RolId { get; set; }
         public List<string> PermisosIds { get; set; }
     }
+
+    public class RolConPermisosDto
+    {
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
+        public List<string> PermisosIds { get; set; } 
+        public bool Activo { get; set; }
+    }
 }

@@ -1,0 +1,15 @@
+meta {
+  name: GetPermisosActivos
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:5150/api/permisos/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJVc3VhcmlvIjoiRXJpY2siLCJleHAiOjE3Mjc2NDE1MzV9.toFwEPJFsKfcMFj1BOOjXP2j-zr8NhPfSJ7KYm6JSAQ
+}

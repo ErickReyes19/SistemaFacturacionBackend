@@ -19,6 +19,11 @@ namespace Sistema_Facturacion.Configurations
             builder.Property(r => r.Nombre)
                    .HasColumnName("NOMBRE")
                    .IsRequired()
+                   .HasMaxLength(100);      
+            
+            builder.Property(r => r.Descripcion)
+                   .HasColumnName("DESCRIPCION")
+                   .IsRequired()
                    .HasMaxLength(100);
 
             builder.Property(r => r.FechaCreacion)

@@ -40,6 +40,10 @@ namespace Sistema_Facturacion.Configurations
             builder.Property(p => p.CategoriaId)
                    .HasColumnName("CATEGORIA_ID")
                    .IsRequired();
+
+            builder.Property(p => p.Stock)
+                   .HasColumnName("STOCK")
+                   .IsRequired();
         }
     }
 }

@@ -7,5 +7,9 @@ meta {
 get {
   url: http://localhost:5150/api/permisos/
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJVc3VhcmlvIjoiRXJpY2siLCJwZXJtaXNvcyI6WyJlbGltaW5hciB1c3VhcmlvcyIsIlZlciB1c3VhcmlvcyIsIlZlciBGYWN0dXJhcyIsIkFjdHVhbGl6YXIgdXN1YXJpb3MiXSwiZXhwIjoxNzI3NTY3NTg4fQ.9lybQHId5jtBuLmUBmwTEPUQEwwMkJbMxa4Oo9rQZqw
 }

@@ -37,6 +37,7 @@ namespace Sistema_Facturacion.Endpoints.Productos
                 p.Descripcion,
                 p.FechaRegistro,
                 p.Activo,
+                p.Stock,
                 CategoriaNombre = categorias.FirstOrDefault(c => c.CategoriaId == p.CategoriaId)?.Nombre // Obtenemos el nombre de la categoría
             }).ToList();
 
@@ -64,6 +65,7 @@ namespace Sistema_Facturacion.Endpoints.Productos
                 p.Descripcion,
                 p.FechaRegistro,
                 p.Activo,
+                p.Stock,
                 CategoriaNombre = categorias.FirstOrDefault(c => c.CategoriaId == p.CategoriaId)?.Nombre 
             }).ToList();
 
@@ -123,6 +125,7 @@ namespace Sistema_Facturacion.Endpoints.Productos
             productoEntity.Descripcion = productoDto.Descripcion;
             productoEntity.CategoriaId = productoDto.CategoriaNombre;
             productoEntity.Activo = productoDto.Activo ? 1 : 0;
+            productoEntity.Stock = productoDto.Stock;
 
 
             await context.SaveChangesAsync();
