@@ -9,5 +9,6 @@
         public string RolId { get; set; }
         public DateTime FechaCreacion { get; set; }
         public int Activo { get; set; } 
+        public RolEntity Rol { get; set; }
     }
 }

@@ -1,0 +1,15 @@
+meta {
+  name: GetProductosActivos
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:5150/api/productos
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5N2JmNmE4Zi0xNGMzLTQzYTItYjA5Mi0zZjRjMWJhZWY4MzgiLCJVc3VhcmlvIjoiRXJpY2siLCJwZXJtaXNvcyI6WyJWZXIgY2xpZW50ZXMiLCJDcmVhciBDbGllbnRlIiwiRWxpbWluYXIgY2xpZW50ZSIsIkVkaXRhciBjbGllbnRlcyJdLCJleHAiOjE3Mjc3MTYwODR9.aVMvHFnOSO9TYS7jq8amA3a3JuKYQn3PnOZnexjY2X0
+}

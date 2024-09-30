@@ -43,6 +43,12 @@ namespace Sistema_Facturacion.Configurations
             builder.Property(u => u.Activo)
                    .HasColumnName("ACTIVO")
                    .IsRequired();
+
+            
+            builder.HasOne(u => u.Rol) 
+                   .WithMany(r => r.Usuarios) 
+                   .HasForeignKey(u => u.RolId)
+                   .OnDelete(DeleteBehavior.Cascade); 
         }
     }
 }

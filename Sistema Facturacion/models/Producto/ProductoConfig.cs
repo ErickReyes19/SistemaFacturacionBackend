@@ -10,7 +10,7 @@ namespace Sistema_Facturacion.Configurations
         {
             builder.ToTable("PRODUCTOS", "SISTEMAFACTURACION");
 
-            builder.HasKey(p => p.ProductoId); 
+            builder.HasKey(p => p.ProductoId);
 
             builder.Property(p => p.ProductoId)
                    .HasColumnName("PRODUCTO_ID")
@@ -23,19 +23,19 @@ namespace Sistema_Facturacion.Configurations
 
             builder.Property(p => p.PrecioProducto)
                    .HasColumnName("PRECIO_PRODUCTO")
-                   .IsRequired(); 
+                   .IsRequired();
 
             builder.Property(p => p.Descripcion)
                    .HasColumnName("DESCRIPCION")
-                   .HasMaxLength(500); 
+                   .HasMaxLength(500);
 
             builder.Property(p => p.FechaRegistro)
                    .HasColumnName("FECHA_REGISTRO")
-                   .HasDefaultValueSql("CURRENT_TIMESTAMP"); 
+                   .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             builder.Property(p => p.Activo)
                    .HasColumnName("ACTIVO")
-                   .IsRequired(); 
+                   .IsRequired();
 
             builder.Property(p => p.CategoriaId)
                    .HasColumnName("CATEGORIA_ID")
@@ -44,6 +44,10 @@ namespace Sistema_Facturacion.Configurations
             builder.Property(p => p.Stock)
                    .HasColumnName("STOCK")
                    .IsRequired();
+
+            builder.HasOne(p => p.Categoria)
+                   .WithMany() 
+                   .HasForeignKey(p => p.CategoriaId);
         }
     }
 }
